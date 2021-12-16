@@ -28,7 +28,10 @@ p {
 img {
   padding-right: 1rem;
 }
-
+.erreur {
+  font-size: 12px;
+  color: red;
+}
 .topnav {
   overflow: hidden;
   margin: 3.5%;
@@ -439,12 +442,14 @@ input[data-error]::after {
   font-size: 6rem;
   font-weight: normal;
   white-space: nowrap;
+  margin-left: 50px;
 }
 .hero-text {
   width: 146%;
   font-weight: normal;
   margin-top: 57px;
   padding: 0;
+  margin-left: 50px;
 }
 .btn-signup {
   outline: none;
@@ -453,6 +458,7 @@ input[data-error]::after {
   padding: 15px 23px;
   margin: 0;
   margin-top: 59px;
+  margin-left: 50px;
 }
 .hero-img {
   grid-column: span 8;
