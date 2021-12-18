@@ -20,14 +20,36 @@ function launchModal() {
   modalbg.style.display = 'block'
 }
 
+// regex validation input
+const nameRegex = /^[a-zA-Z][a-zéèç]/
+const emailRegex = /^[a-zA-Z0-9._-]+[@]{1}[a-zA-Z]+[.]{1}[a-z]{2,10}$/
+const quantityRegex = /^[0-9]{1,2}$/
+
+// affichage erreur
+const erreurPrenom = document.getElementById('erreurPrenom')
+const erreurNom = document.getElementById('erreurNom')
+const erreurEmail = document.getElementById('erreurEmail')
+const erreurDate = document.getElementById('erreurDate')
+const erreurQuantity = document.getElementById('erreurQuantity')
+const erreurVille = document.getElementById('erreurVille')
+const erreurCondition = document.getElementById('erreurCondition')
+
+// message validation formulaire
+const msgValidation = document.getElementById('formulaire')
+
 const formValid = document.getElementById('button')
 formValid.addEventListener('click', function (e) {
   e.preventDefault()
 
-  let nameRegex = /^[a-zA-Z][a-zéèç]/
-
+  // récupération valeur des inputs
   let prenom = document.getElementById('first').value
-  let erreurPrenom = document.getElementById('erreurPrenom')
+  let nom = document.getElementById('last').value
+  let email = document.getElementById('email').value
+  let birthdate = document.getElementById('birthdate').value
+  let quantity = document.getElementById('quantity').value
+  let location = document.getElementsByName('location')
+  let condition = document.getElementById('checkbox1').checked
+
   if (!nameRegex.test(prenom)) {
     erreurPrenom.innerHTML =
       'Veuillez entrer 2 caractères ou plus pour le champ du prénom '
@@ -35,8 +57,6 @@ formValid.addEventListener('click', function (e) {
     erreurPrenom.style.display = 'none'
   }
 
-  let nom = document.getElementById('last').value
-  let erreurNom = document.getElementById('erreurNom')
   if (!nameRegex.test(nom)) {
     erreurNom.innerHTML =
       'Veuillez entrer 2 caractères ou plus pour le champ du nom '
@@ -44,45 +64,33 @@ formValid.addEventListener('click', function (e) {
     erreurNom.style.display = 'none'
   }
 
-  let email = document.getElementById('email').value
-  let emailRegex = /^[a-zA-Z0-9._-]+[@]{1}[a-zA-Z]+[.]{1}[a-z]{2,10}$/
-  let erreurEmail = document.getElementById('erreurEmail')
   if (!emailRegex.test(email)) {
     erreurEmail.innerHTML = ' Veuiilez entrer une adresse email valide'
   } else {
     erreurEmail.style.display = 'none'
   }
 
-  let birthdate = document.getElementById('birthdate').value
-  let erreurDate = document.getElementById('erreurDate')
   if (!birthdate) {
     erreurDate.innerHTML = 'Vous devez entrer votre date de naissance'
   } else {
     erreurDate.style.display = 'none'
   }
 
-  let quantity = document.getElementById('quantity').value
-  let quantityRegex = /^[0-9]{1,2}$/
-  let erreurQuantity = document.getElementById('erreurQuantity')
   if (!quantityRegex.test(quantity)) {
     erreurQuantity.innerHTML = 'Veuillez saisir une valeur entre 0 et 99'
   } else {
     erreurQuantity.style.display = 'none'
   }
 
-  let location = document.getElementsByName('location')
   //console.log(location)
   for (i = 0; i < location.length; i++) {
     if (!location[i].checked) {
-      document.getElementById('erreurVille').innerHTML =
-        'veuillez coher une case'
+      erreurVille.innerHTML = 'veuillez coher une case'
     } else {
-      document.getElementById('erreurVille').style.display = 'none'
+      erreurVille.style.display = 'none'
     }
   }
 
-  let condition = document.getElementById('checkbox1').checked
-  let erreurCondition = document.getElementById('erreurCondition')
   if (!condition) {
     erreurCondition.innerHTML =
       "veuillez accepter les conditions d'utilisations"
@@ -99,8 +107,7 @@ formValid.addEventListener('click', function (e) {
     location &&
     condition
   ) {
-    document.getElementById('formulaire').innerHTML =
-      'Merci ! Votre réservation a été reçue.'
+    msgValidation.innerHTML = 'Merci ! Votre réservation a été reçue.'
   }
 })
 

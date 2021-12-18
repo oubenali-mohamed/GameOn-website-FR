@@ -69,7 +69,12 @@ img {
 .topnav .icon {
   display: none;
 }
-
+.hero-headline {
+  margin-left: 50px;
+}
+.hero-text {
+  margin-left: 50px;
+}
 @media screen and (max-width: 768px) {
   .topnav a {
     display: none;
@@ -504,10 +509,12 @@ footer {
     font-size: 2rem;
     white-space: normal;
     font-weight: bold;
+    margin-left: 0px;
   }
   .hero-text {
     width: 80%;
     font-size: 1rem;
+    margin-left: 0px;
   }
   .hero-img img {
     border-radius: 10px;
