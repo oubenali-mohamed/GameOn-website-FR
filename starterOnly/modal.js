@@ -54,6 +54,7 @@ formValid.addEventListener('click', function (e) {
     erreurPrenom.innerHTML =
       'Veuillez entrer 2 caractères ou plus pour le champ du prénom '
   } else {
+    fonction()
     erreurPrenom.style.display = 'none'
   }
 
@@ -61,6 +62,7 @@ formValid.addEventListener('click', function (e) {
     erreurNom.innerHTML =
       'Veuillez entrer 2 caractères ou plus pour le champ du nom '
   } else {
+    inputValide()
     erreurNom.style.display = 'none'
   }
 
@@ -110,6 +112,9 @@ formValid.addEventListener('click', function (e) {
     msgValidation.innerHTML = 'Merci ! Votre réservation a été reçue.'
   }
 })
+function inputValide() {
+  document.getElementById('erreurPrenom').innerHTML = ''
+}
 
 const closeModal = document.getElementById('close')
 closeModal.addEventListener('click', function (e) {
