@@ -54,7 +54,6 @@ formValid.addEventListener('click', function (e) {
     erreurPrenom.innerHTML =
       'Veuillez entrer 2 caractères ou plus pour le champ du prénom '
   } else {
-    fonction()
     erreurPrenom.style.display = 'none'
   }
 
@@ -62,7 +61,6 @@ formValid.addEventListener('click', function (e) {
     erreurNom.innerHTML =
       'Veuillez entrer 2 caractères ou plus pour le champ du nom '
   } else {
-    inputValide()
     erreurNom.style.display = 'none'
   }
 
@@ -112,8 +110,37 @@ formValid.addEventListener('click', function (e) {
     msgValidation.innerHTML = 'Merci ! Votre réservation a été reçue.'
   }
 })
+
 function inputValide() {
-  document.getElementById('erreurPrenom').innerHTML = ''
+  let prenom = document.getElementById('first').value
+  let nom = document.getElementById('last').value
+  let email = document.getElementById('email').value
+  let birthdate = document.getElementById('birthdate').value
+  let quantity = document.getElementById('quantity').value
+  /* let location = document.getElementsByName('location')
+  let condition = document.getElementById('checkbox1').checked */
+
+  if (prenom && nameRegex.test(prenom)) {
+    document.getElementById('erreurPrenom').innerHTML = ''
+  }
+  if (nom && nameRegex.test(nom)) {
+    document.getElementById('erreurNom').innerHTML = ''
+  }
+  if (email && emailRegex.test(email)) {
+    document.getElementById('erreurEmail').innerHTML = ''
+  }
+  if (birthdate) {
+    document.getElementById('erreurDate').innerHTML = ''
+  }
+  if (quantity && quantityRegex.test(quantity)) {
+    document.getElementById('erreurQuantity').innerHTML = ''
+  }
+  /* if (location) {
+    document.getElementsByClassName('erreurLocation').innerHTML = ''
+  }
+  if (condition) {
+    document.getElementById('erreurCondition').innerHTML = ''
+  } */
 }
 
 const closeModal = document.getElementById('close')
