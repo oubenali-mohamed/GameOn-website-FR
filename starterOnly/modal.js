@@ -10,7 +10,6 @@ function editNav() {
 // DOM Elements
 const modalbg = document.querySelector('.bground')
 const modalBtn = document.querySelectorAll('.modal-btn')
-const formData = document.querySelectorAll('.formData')
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener('click', launchModal))
@@ -37,6 +36,7 @@ const erreurCondition = document.getElementById('erreurCondition')
 // message validation formulaire
 const msgValidation = document.getElementById('formulaire')
 
+//vérification des champs de saisi
 const formValid = document.getElementById('button')
 formValid.addEventListener('click', function (e) {
   e.preventDefault()
@@ -144,7 +144,6 @@ function inputValide() {
 }
 
 const closeModal = document.getElementById('close')
-closeModal.addEventListener('click', function (e) {
-  e.preventDefault()
+closeModal.addEventListener('click', function () {
   window.location.href = 'index.html'
 })
