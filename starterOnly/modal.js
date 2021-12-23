@@ -18,13 +18,18 @@ modalBtn.forEach((btn) => btn.addEventListener('click', launchModal))
 function launchModal() {
   modalbg.style.display = 'block'
 }
+// close modal
+const closeModal = document.getElementById('close')
+closeModal.addEventListener('click', function () {
+  modalbg.style.display = 'none'
+})
 
 // regex validation input
 const nameRegex = /^[a-zA-Z][a-zéèç]/
-const emailRegex = /^[a-zA-Z0-9._-]+[@]{1}[a-zA-Z]+[.]{1}[a-z]{2,10}$/
+const emailRegex = /^[a-zA-Z0-9._-]+[@]{1}[a-zA-Z]+[.]{1}[a-z]{2,6}$/
 const quantityRegex = /^[0-9]{1,2}$/
 
-// affichage erreur
+// span pour affichage erreur
 const erreurPrenom = document.getElementById('erreurPrenom')
 const erreurNom = document.getElementById('erreurNom')
 const erreurEmail = document.getElementById('erreurEmail')
@@ -33,6 +38,16 @@ const erreurQuantity = document.getElementById('erreurQuantity')
 const erreurVille = document.getElementById('erreurVille')
 const erreurCondition = document.getElementById('erreurCondition')
 
+// contenu de l'erreur
+const prenomErreur =
+  'Veuillez entrer 2 caractères ou plus pour le champ du prénom '
+const nomErreur = 'Veuillez entrer 2 caractères ou plus pour le champ du nom '
+const emailErreur = ' Veuiilez entrer une adresse email valide'
+const birthdateErreur = 'Vous devez entrer votre date de naissance'
+const quantityErreur = 'Veuillez saisir une valeur entre 0 et 99'
+const locationErreur = 'veuillez coher une case'
+const conditionErreur = "veuillez accepter les conditions d'utilisations"
+
 // message validation formulaire
 const msgValidation = document.getElementById('formulaire')
 
@@ -40,7 +55,6 @@ const msgValidation = document.getElementById('formulaire')
 const formValid = document.getElementById('button')
 formValid.addEventListener('click', function (e) {
   e.preventDefault()
-
   // récupération valeur des inputs
   let prenom = document.getElementById('first').value
   let nom = document.getElementById('last').value
@@ -51,49 +65,45 @@ formValid.addEventListener('click', function (e) {
   let condition = document.getElementById('checkbox1').checked
 
   if (!nameRegex.test(prenom)) {
-    erreurPrenom.innerHTML =
-      'Veuillez entrer 2 caractères ou plus pour le champ du prénom '
+    erreurPrenom.innerHTML = prenomErreur
   } else {
     erreurPrenom.style.display = 'none'
   }
 
   if (!nameRegex.test(nom)) {
-    erreurNom.innerHTML =
-      'Veuillez entrer 2 caractères ou plus pour le champ du nom '
+    erreurNom.innerHTML = nomErreur
   } else {
     erreurNom.style.display = 'none'
   }
 
   if (!emailRegex.test(email)) {
-    erreurEmail.innerHTML = ' Veuiilez entrer une adresse email valide'
+    erreurEmail.innerHTML = emailErreur
   } else {
     erreurEmail.style.display = 'none'
   }
 
   if (!birthdate) {
-    erreurDate.innerHTML = 'Vous devez entrer votre date de naissance'
+    erreurDate.innerHTML = birthdateErreur
   } else {
     erreurDate.style.display = 'none'
   }
 
   if (!quantityRegex.test(quantity)) {
-    erreurQuantity.innerHTML = 'Veuillez saisir une valeur entre 0 et 99'
+    erreurQuantity.innerHTML = quantityErreur
   } else {
     erreurQuantity.style.display = 'none'
   }
 
-  //console.log(location)
   for (i = 0; i < location.length; i++) {
     if (!location[i].checked) {
-      erreurVille.innerHTML = 'veuillez coher une case'
+      erreurVille.innerHTML = locationErreur
     } else {
       erreurVille.style.display = 'none'
     }
   }
 
   if (!condition) {
-    erreurCondition.innerHTML =
-      "veuillez accepter les conditions d'utilisations"
+    erreurCondition.innerHTML = conditionErreur
   } else {
     erreurCondition.style.display = 'none'
   }
@@ -107,10 +117,13 @@ formValid.addEventListener('click', function (e) {
     location &&
     condition
   ) {
-    msgValidation.innerHTML = 'Merci ! Votre réservation a été reçue.'
+    msgValidation.innerHTML = 'Merci pour votre inscription.'
+    msgValidation.style.marginTop = '425px'
+    msgValidation.style.marginLeft = '50px'
   }
 })
 
+//validatation des inputs à la perte du focus
 function inputValide() {
   let prenom = document.getElementById('first').value
   let nom = document.getElementById('last').value
@@ -119,38 +132,28 @@ function inputValide() {
   let quantity = document.getElementById('quantity').value
 
   if (!prenom) {
-    document.getElementById('erreurPrenom').innerHTML =
-      'Veuillez entrer 2 caractères ou plus pour le champ du prénom'
+    erreurPrenom.innerHTML = prenomErreur
   } else if (prenom && nameRegex.test(prenom)) {
-    document.getElementById('erreurPrenom').innerHTML = ''
+    erreurPrenom.style.display = 'none'
   }
   if (!nom) {
-    document.getElementById('erreurNom').innerHTML =
-      'Veuillez entrer 2 caractères ou plus pour le champ du nom'
+    erreurNom.innerHTML = nomErreur
   } else if (nom && nameRegex.test(nom)) {
-    document.getElementById('erreurNom').innerHTML = ''
+    erreurNom.style.display = 'none'
   }
   if (!email) {
-    document.getElementById('erreurEmail').innerHTML =
-      'Veuiilez entrer une adresse email valide'
+    erreurEmail.innerHTML = emailErreur
   } else if (email && emailRegex.test(email)) {
-    document.getElementById('erreurEmail').innerHTML = ''
+    erreurEmail.style.display = 'none'
   }
   if (!birthdate) {
-    document.getElementById('erreurDate').innerHTML =
-      'Vous devez entrer votre date de naissance'
+    erreurDate.innerHTML = birthdateErreur
   } else if (birthdate) {
-    document.getElementById('erreurDate').innerHTML = ''
+    erreurDate.style.display = 'none'
   }
   if (!quantity) {
-    document.getElementById('erreurQuantity').innerHTML =
-      'Veuillez saisir une valeur entre 0 et 99'
+    erreurQuantity.innerHTML = quantityErreur
   } else if (quantity && quantityRegex.test(quantity)) {
-    document.getElementById('erreurQuantity').innerHTML = ''
+    erreurQuantity.style.display = 'none'
   }
 }
-
-const closeModal = document.getElementById('close')
-closeModal.addEventListener('click', function () {
-  window.location.href = 'index.html'
-})
