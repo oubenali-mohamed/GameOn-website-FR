@@ -117,30 +117,37 @@ function inputValide() {
   let email = document.getElementById('email').value
   let birthdate = document.getElementById('birthdate').value
   let quantity = document.getElementById('quantity').value
-  /* let location = document.getElementsByName('location')
-  let condition = document.getElementById('checkbox1').checked */
 
-  if (prenom && nameRegex.test(prenom)) {
+  if (!prenom) {
+    document.getElementById('erreurPrenom').innerHTML =
+      'Veuillez entrer 2 caractères ou plus pour le champ du prénom'
+  } else if (prenom && nameRegex.test(prenom)) {
     document.getElementById('erreurPrenom').innerHTML = ''
   }
-  if (nom && nameRegex.test(nom)) {
+  if (!nom) {
+    document.getElementById('erreurNom').innerHTML =
+      'Veuillez entrer 2 caractères ou plus pour le champ du nom'
+  } else if (nom && nameRegex.test(nom)) {
     document.getElementById('erreurNom').innerHTML = ''
   }
-  if (email && emailRegex.test(email)) {
+  if (!email) {
+    document.getElementById('erreurEmail').innerHTML =
+      'Veuiilez entrer une adresse email valide'
+  } else if (email && emailRegex.test(email)) {
     document.getElementById('erreurEmail').innerHTML = ''
   }
-  if (birthdate) {
+  if (!birthdate) {
+    document.getElementById('erreurDate').innerHTML =
+      'Vous devez entrer votre date de naissance'
+  } else if (birthdate) {
     document.getElementById('erreurDate').innerHTML = ''
   }
-  if (quantity && quantityRegex.test(quantity)) {
+  if (!quantity) {
+    document.getElementById('erreurQuantity').innerHTML =
+      'Veuillez saisir une valeur entre 0 et 99'
+  } else if (quantity && quantityRegex.test(quantity)) {
     document.getElementById('erreurQuantity').innerHTML = ''
   }
-  /* if (location) {
-    document.getElementsByClassName('erreurLocation').innerHTML = ''
-  }
-  if (condition) {
-    document.getElementById('erreurCondition').innerHTML = ''
-  } */
 }
 
 const closeModal = document.getElementById('close')
