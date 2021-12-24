@@ -18,7 +18,7 @@ modalBtn.forEach((btn) => btn.addEventListener('click', launchModal))
 function launchModal() {
   modalbg.style.display = 'block'
 }
-// close modal
+// close modal form
 const closeModal = document.getElementById('close')
 closeModal.addEventListener('click', function () {
   modalbg.style.display = 'none'
@@ -118,8 +118,7 @@ formValid.addEventListener('click', function (e) {
     condition
   ) {
     msgValidation.innerHTML = 'Merci pour votre inscription.'
-    msgValidation.style.marginTop = '425px'
-    msgValidation.style.marginLeft = '50px'
+    msgValidation.style.marginTop = '350px'
   }
 })
 
