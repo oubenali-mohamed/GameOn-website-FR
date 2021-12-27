@@ -49,7 +49,7 @@ const locationErreur = 'veuillez coher une case'
 const conditionErreur = "veuillez accepter les conditions d'utilisations"
 
 // message validation formulaire
-const msgValidation = document.getElementById('formulaire')
+const msgValidation = document.getElementById('formValid')
 
 //vérification des champs de saisi
 const formValid = document.getElementById('button')
@@ -118,7 +118,9 @@ formValid.addEventListener('click', function (e) {
     condition
   ) {
     msgValidation.innerHTML = 'Merci pour votre inscription.'
-    msgValidation.style.marginTop = '350px'
+    msgValidation.style.height = '714px'
+    msgValidation.style.lineHeight = '30em'
+    msgValidation.style.textAlign = 'center'
   }
 })
 
