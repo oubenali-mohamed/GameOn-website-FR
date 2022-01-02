@@ -1,11 +1,13 @@
-function editNav() {
+const icon = document.getElementById('icon')
+icon.addEventListener('click', function (e) {
+  e.preventDefault()
   var x = document.getElementById('myTopnav')
   if (x.className === 'topnav') {
     x.className += ' responsive'
   } else {
     x.className = 'topnav'
   }
-}
+})
 
 // DOM Elements
 const modalbg = document.querySelector('.bground')
@@ -125,16 +127,56 @@ formValid.addEventListener('click', function (e) {
 })
 
 //validatation des inputs à la perte du focus
-function inputValide() {
+const validPrenom = document.getElementById('first')
+validPrenom.addEventListener('change', function () {
+  if (!nameRegex.test(validPrenom.value)) {
+    erreurPrenom.innerHTML = prenomErreur
+  } else {
+    erreurPrenom.style.display = 'none'
+  }
+})
+const validNom = document.getElementById('last')
+validNom.addEventListener('change', function () {
+  if (!nameRegex.test(validNom.value)) {
+    erreurNom.innerHTML = nomErreur
+  } else {
+    erreurNom.style.display = 'none'
+  }
+})
+const validEmail = document.getElementById('email')
+validEmail.addEventListener('change', function () {
+  if (!emailRegex.test(validEmail.value)) {
+    erreurEmail.innerHTML = emailErreur
+  } else {
+    erreurEmail.style.display = 'none'
+  }
+})
+const validBirthdate = document.getElementById('birthdate')
+validBirthdate.addEventListener('change', function () {
+  if (!validBirthdate.value) {
+    erreurDate.innerHTML = birthdateErreur
+  } else {
+    erreurDate.style.display = 'none'
+  }
+})
+const validQuantity = document.getElementById('quantity')
+validQuantity.addEventListener('change', function () {
+  if (!quantityRegex.test(validQuantity.value)) {
+    erreurQuantity.innerHTML = quantityErreur
+  } else {
+    erreurQuantity.style.display = 'none'
+  }
+})
+/* function inputValide() {
   let prenom = document.getElementById('first').value
   let nom = document.getElementById('last').value
   let email = document.getElementById('email').value
   let birthdate = document.getElementById('birthdate').value
   let quantity = document.getElementById('quantity').value
 
-  if (!prenom) {
+  if (!nameRegex.test(prenom)) {
     erreurPrenom.innerHTML = prenomErreur
-  } else if (prenom && nameRegex.test(prenom)) {
+  } else {
     erreurPrenom.style.display = 'none'
   }
   if (!nom) {
@@ -157,4 +199,4 @@ function inputValide() {
   } else if (quantity && quantityRegex.test(quantity)) {
     erreurQuantity.style.display = 'none'
   }
-}
+} */

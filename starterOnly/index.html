@@ -20,7 +20,7 @@
       <a href="#"><span>À propos</span></a>
       <a href="#"><span>Contact</span></a>
       <a href="#"><span>Évènements passés</span></a>
-      <a href="javascript:void(0);" class="icon" onclick="editNav()">
+      <a href="javascript:void(0);" class="icon" id="icon">
         <i class="fa fa-bars"></i>
       </a>
     </div>
@@ -56,29 +56,27 @@
           <form name="reserve" action="index.html" method="post">
             <div class="formData">
               <label for="first">Prénom</label><br>
-              <input class="text-control" type="text" id="first" name="first" minlength="2"
-                onblur="inputValide()" /><br>
+              <input class="text-control" type="text" id="first" name="first" minlength="2" /><br>
               <span id="erreurPrenom" class="erreur"></span>
             </div>
             <div class="formData">
               <label for="last">Nom</label><br>
-              <input class="text-control" type="text" id="last" name="last" onblur="inputValide()" /><br>
+              <input class="text-control" type="text" id="last" name="last" /><br>
               <span id="erreurNom" class="erreur"></span>
             </div>
             <div class="formData">
               <label for="email">E-mail</label><br>
-              <input class="text-control" type="email" id="email" name="email" onblur="inputValide()" /><br>
+              <input class="text-control" type="email" id="email" name="email" /><br>
               <span id="erreurEmail" class="erreur"></span>
             </div>
             <div class="formData">
               <label for="birthdate">Date de naissance</label><br>
-              <input class="text-control" type="date" id="birthdate" name="birthdate" onblur="inputValide()" /><br>
+              <input class="text-control" type="date" id="birthdate" name="birthdate" /><br>
               <span id="erreurDate" class="erreur"></span>
             </div>
             <div class="formData">
               <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-              <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99"
-                onblur="inputValide()">
+              <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
               <span id="erreurQuantity" class="erreur"></span>
             </div>
             <div class="formData">
