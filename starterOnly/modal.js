@@ -129,7 +129,7 @@ formValid.addEventListener('click', function (e) {
 //validatation des inputs à la perte du focus
 const validPrenom = document.getElementById('first')
 validPrenom.addEventListener('change', function () {
-  if (!nameRegex.test(validPrenom.value)) {
+  if (!validPrenom.value || !nameRegex.test(validPrenom.value)) {
     erreurPrenom.innerHTML = prenomErreur
   } else {
     erreurPrenom.style.display = 'none'
@@ -137,7 +137,7 @@ validPrenom.addEventListener('change', function () {
 })
 const validNom = document.getElementById('last')
 validNom.addEventListener('change', function () {
-  if (!nameRegex.test(validNom.value)) {
+  if (!validNom.value || !nameRegex.test(validNom.value)) {
     erreurNom.innerHTML = nomErreur
   } else {
     erreurNom.style.display = 'none'
@@ -145,7 +145,7 @@ validNom.addEventListener('change', function () {
 })
 const validEmail = document.getElementById('email')
 validEmail.addEventListener('change', function () {
-  if (!emailRegex.test(validEmail.value)) {
+  if (!validEmail.value || !emailRegex.test(validEmail.value)) {
     erreurEmail.innerHTML = emailErreur
   } else {
     erreurEmail.style.display = 'none'
@@ -161,42 +161,9 @@ validBirthdate.addEventListener('change', function () {
 })
 const validQuantity = document.getElementById('quantity')
 validQuantity.addEventListener('change', function () {
-  if (!quantityRegex.test(validQuantity.value)) {
+  if (!validQuantity.value || !quantityRegex.test(validQuantity.value)) {
     erreurQuantity.innerHTML = quantityErreur
   } else {
     erreurQuantity.style.display = 'none'
   }
 })
-/* function inputValide() {
-  let prenom = document.getElementById('first').value
-  let nom = document.getElementById('last').value
-  let email = document.getElementById('email').value
-  let birthdate = document.getElementById('birthdate').value
-  let quantity = document.getElementById('quantity').value
-
-  if (!nameRegex.test(prenom)) {
-    erreurPrenom.innerHTML = prenomErreur
-  } else {
-    erreurPrenom.style.display = 'none'
-  }
-  if (!nom) {
-    erreurNom.innerHTML = nomErreur
-  } else if (nom && nameRegex.test(nom)) {
-    erreurNom.style.display = 'none'
-  }
-  if (!email) {
-    erreurEmail.innerHTML = emailErreur
-  } else if (email && emailRegex.test(email)) {
-    erreurEmail.style.display = 'none'
-  }
-  if (!birthdate) {
-    erreurDate.innerHTML = birthdateErreur
-  } else if (birthdate) {
-    erreurDate.style.display = 'none'
-  }
-  if (!quantity) {
-    erreurQuantity.innerHTML = quantityErreur
-  } else if (quantity && quantityRegex.test(quantity)) {
-    erreurQuantity.style.display = 'none'
-  }
-} */
